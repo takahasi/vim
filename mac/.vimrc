@@ -36,8 +36,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
 
 call neobundle#end()
 
