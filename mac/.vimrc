@@ -43,6 +43,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'MaxMEllon/vim-tmng'
 
 call neobundle#end()
 
@@ -78,3 +79,5 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -no-quit outline<Return>
 
+"use neocomplete.
+let g:neocomplete#enable_at_startup = 1
