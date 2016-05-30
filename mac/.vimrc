@@ -1,31 +1,87 @@
+"####################
+"# DISPLAY SETTINGS #
+"####################
+"set ambiwidth=double
 set number
-set nocompatible
-set autoindent
-set incsearch
 "set list
 set showmatch
-set smartindent
 set title
 set showmode
+set cursorline
 set ruler
 set showcmd
-set expandtab
-set ts=4 sts=0
+set showtabline=2
+set cmdheight=2
+set laststatus=2
+set wrap
+syntax on
 
+"###################
+"# INDENT SETTINGS #
+"###################
+set cindent
+set autoindent
+set expandtab "Converts tab -> space
+set smartindent
+set smarttab
+set shiftwidth=4 "# of space inserted automatically
+set tabstop=4 sts=0
+filetype plugin indent off
+
+"###################
+"# SEARCH SETTINGS #
+"###################
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 "set wrapscanset
 
-filetype plugin indent off
+"############################
+"# SWP/BACKUP/UNDO SETTINGS #
+"############################
+set backup
+set swapfile
+set backupdir=$HOME/.vim/.backup//
+set directory=$HOME/.vim/.swp//
+set undodir=$HOME/.vim/.undo//
+set writebackup
 
+"##################
+"# OTHER SETTINGS #
+"##################
+set nocompatible " no compatible with vi
+set backspace=2
+set wildmenu
+set foldenable
+set foldmethod=indent
+set foldopen=all
+set foldlevel=0
+set foldnestmax=2
+set foldcolumn=2
 
-" Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
+command Vimrc :tabnew ~/.vimrc
 
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+"####################
+"# AUTOCMD SETTINGS #
+"####################
+augroup General
+ autocmd!
+ autocmd BufWinLeave * silent mkview
+ autocmd BufWinEnter * silent loadview
+augroup END
 
+augroup C_Cpp
+ function! s:setC_Cpp()
+ nnoremap  .gcc :!gcc %
+ set cindent
+ endfunction
+ autocmd BufRead *.c,*.cpp call s:setC_Cpp()
+augroup END
+
+"######################
+"# NEOBUNDLE SETTINGS #
+"######################
 " Required:
 set runtimepath+=~/.vim/bundle/neobundle.vim
 
