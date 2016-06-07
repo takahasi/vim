@@ -28,9 +28,27 @@ categories: [{{_categories_}}]
 
 ----------
 □ <読んだ論文>
-# 
-# 
-# 
+###
+@title  
+@date   
+@url    
+@author 
+@brief  
+
+###
+@title  
+@date   
+@url    
+@author 
+@brief  
+
+###
+@title  
+@date   
+@url    
+@author 
+@brief  
+
 
 □ <所感>
 
