@@ -95,11 +95,13 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'grep.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle "Shougo/unite-outline"
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -110,6 +112,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'fuenor/qfixgrep'
 
 call neobundle#end()
 
@@ -117,34 +121,39 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-""" unite.vim
-" 入力モードで開始する
+"#############
+"# unite.vim #
+"#############
+" startup on input mode
 " let g:unite_enable_start_insert=1
-" バッファ一覧
+" buffer list
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
+" file list
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" レジスタ一覧
+" register list
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
+" file list used recent
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-" 常用セット
+" usually
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-" 全部乗せ
+" all
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-" ウィンドウを分割して開く
+" open w/split horizontal
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-" ウィンドウを縦に分割して開く
+" open w/split vertical
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
+" Ends by ESC twice
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -no-quit outline<Return>
 
+"###################
+"# neocomplete.vim #
+"###################
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -215,3 +224,18 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl ='\h\w*->\h\w*\|\h\w*::'
+"################
+"# memolist.vim #
+"################
+map <Leader>mn  :MemoNew<CR>
+map <Leader>ml  :MemoList<CR>
+map <Leader>mg  :MemoGrep<CR>
+let g:memolist_memo_suffix = "txt"
+let g:memolist_memo_date = "%Y-%m-%d %H:%M"
+let g:memolist_memo_date = "epoch"
+let g:memolist_memo_date = "%D %T"
+let g:memolist_prompt_tags = 1
+let g:memolist_prompt_categories = 1
+let g:memolist_vimfiler = 1
+let g:memolist_template_dir_path = "~/.vim/templates/memolist"
+let g:memolist_qfixgrep = 1
