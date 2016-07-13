@@ -21,11 +21,12 @@ syntax on
 "###################
 set cindent
 set autoindent
-set expandtab "Converts tab -> space
+set expandtab       "Converts tab -> space
 set smartindent
 set smarttab
-set shiftwidth=4 "# of space inserted automatically
-set tabstop=4 sts=0
+set shiftwidth=4    "Number of space inserted automatically
+set tabstop=4       "Number of spaces inserted when tab key is pressed
+set softtabstop=0   "Number of spaces inserted when tab key is pressed (higher priority)
 filetype plugin indent off
 
 "###################
@@ -72,8 +73,8 @@ command Vimrc :tabnew ~/.vimrc
 "####################
 augroup General
  autocmd!
- autocmd BufWinLeave * silent mkview
- autocmd BufWinEnter * silent loadview
+ autocmd BufWinLeave ?* silent mkview 1
+ autocmd BufWinEnter ?* silent loadview 1
 augroup END
 
 augroup C_Cpp
@@ -198,13 +199,13 @@ inoremap <expr><C-l> neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 "  <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-"   " <TAB>: completion.
+"endfunction
+" <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"

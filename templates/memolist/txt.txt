@@ -10,7 +10,7 @@ categories: [{{_categories_}}]
 # 
 # 
 
-■ <雑用>
+■ <その他>
 # 
 # 
 # 
