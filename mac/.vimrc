@@ -99,7 +99,10 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+if has('unix')
+else
+  NeoBundleFetch 'Shougo/neobundle.vim'
+endif
 
 NeoBundle 'grep.vim'
 NeoBundle 'Shougo/unite.vim'
