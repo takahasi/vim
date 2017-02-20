@@ -85,6 +85,10 @@ augroup C_Cpp
  autocmd BufRead *.c,*.cpp call s:setC_Cpp()
 augroup END
 
+autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
+autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
+autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
+
 "######################
 "# NEOBUNDLE SETTINGS #
 "######################
@@ -127,8 +131,8 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'rhysd/vim-operator-surround'
 NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'andviro/flake8-vim'
-NeoBundle 'hynek/vim-python-pep8-indent'
+"NeoBundle 'andviro/flake8-vim'
+"NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'bps/vim-textobj-python'
 
 call neobundle#end()
