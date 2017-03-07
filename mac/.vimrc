@@ -89,6 +89,10 @@ autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 "######################
 "# NEOBUNDLE SETTINGS #
 "######################
@@ -135,7 +139,7 @@ NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'rhysd/vim-operator-surround'
 NeoBundle 'davidhalter/jedi-vim'
 "NeoBundle 'andviro/flake8-vim'
-"NeoBundle 'hynek/vim-python-pep8-indent'
+NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'bps/vim-textobj-python'
 
 call neobundle#end()
